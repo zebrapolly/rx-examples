@@ -1,24 +1,64 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useMemo, useState} from 'react';
 import './App.css';
+import {
+    BehaviorSubject,
+    tap,
+    debounceTime,
+    map,
+    switchMap,
+    distinctUntilChanged,
+    filter,
+    from,
+    toArray,
+    mergeMap, catchError, EMPTY
+} from "rxjs";
+import {fromFetch} from "rxjs/internal/observable/dom/fetch";
 
 function App() {
+    const [input, setInput ] = useState('');
+    const [searchResults, setSearchResults] = useState([])
+    const userInput = useMemo(() => new BehaviorSubject(''), []);
+
+
+    useEffect(() => {
+      if(userInput) {
+
+          const sub = userInput
+              .pipe(
+                  tap(e => setInput(e)),
+                  filter(val => !!val.length),
+                  debounceTime(1000),
+                  distinctUntilChanged(),
+                  switchMap(val =>
+                      fromFetch(`/-/v1/search?text=${val}&size=20`),
+
+                  ),
+                  catchError(err => {
+                      console.log(err)
+                      return EMPTY;
+                  }),
+                  switchMap((response) => response.json()),
+                  map(res => res.objects),
+                  mergeMap(val => from(val).pipe(
+                      // @ts-ignore
+                      map(item => item.package.name),
+                      toArray()
+                  )),
+              )
+              // @ts-ignore
+              .subscribe((res) => setSearchResults(res));
+          return () => sub.unsubscribe();
+      }
+    }, [userInput]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <input
+          type="text"
+          onChange={(e) => userInput.next(e.target.value)}
+          value={input}
+      />
+        {JSON.stringify(searchResults, null, 4)}
     </div>
   );
 }
