@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="690aece6-f49f-4a55-a2d1-94730c1a5b93" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="690aece6-f49f-4a55-a2d1-94730c1a5b93" name="Changes" comment="drug n drop" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,11 +52,44 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709209239425</updated>
-      <workItem from="1709209240450" duration="18853000" />
+      <workItem from="1709209240450" duration="22881000" />
     </task>
+    <task id="LOCAL-00001" summary="init, debounce example, throttle example">
+      <option name="closed" value="true" />
+      <created>1709565538247</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1709565538247</updated>
+    </task>
+    <task id="LOCAL-00002" summary="drug n drop">
+      <option name="closed" value="true" />
+      <created>1709626015815</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1709626015815</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init, debounce example, throttle example" />
+    <MESSAGE value="drug n drop" />
+    <option name="LAST_COMMIT_MESSAGE" value="drug n drop" />
   </component>
 </project>
