@@ -31,7 +31,6 @@ function App() {
                   distinctUntilChanged(),
                   switchMap(val =>
                       fromFetch(`/-/v1/search?text=${val}&size=20`),
-
                   ),
                   catchError(err => {
                       console.log(err)
